@@ -1,0 +1,11 @@
+<p>Editor Instance Id: {{ editorInstanceId }}</p>
+<ckeditor
+  #editorComponent
+  [config]="config"
+  [editor]="editor"
+  [(ngModel)]="model.editorData"
+  (blur)="onBlur($event)"
+  (change)="onChange($event)"
+  (focus)="onFocus($event)"
+  (ready)="onReady($event)"
+></ckeditor>
