@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'editor-demo';
-  editors = [0];
+  editors: Array<number> = [];
 
   addEditor(): void {
     this.editors.push(this.editors.length);
