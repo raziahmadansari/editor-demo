@@ -1,16 +1,28 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 
 import CustomEditor from 'ckeditor5-custom-build';
 import { EditorConfig } from '@ckeditor/ckeditor5-core';
-import { CKEditorCommentsService } from '../services/ckeditor-comments.service';
+import { CKEditorCommentsService } from '../../services/ckeditor-comments.service';
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent implements OnInit, OnChanges, OnDestroy {
   @Input() editorInstanceId!: number;
+  @Output() onEditorReady = new EventEmitter<any>();
 
   private _users = [
     { id: 1, name: 'User 1' },
@@ -50,25 +62,35 @@ export class EditorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(`editor initiated: { editorId: ${this.editorInstanceId} }`);
     this.initConfiguration();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(`editor changes: { editorId: ${this.editorInstanceId} }`);
+  }
+
+  ngOnDestroy(): void {
+    window.editor = null;
   }
 
   //#region Editor callbacks
 
   onBlur(event: any): void {
-    console.log('On blur: ', event);
+    // console.log('On blur: ', event);
   }
 
   onChange(event: any): void {
-    console.log('On change: ', event);
+    // console.log('On change: ', event);
   }
 
   onFocus(event: any): void {
-    console.log('On focus: ', event);
+    // console.log('On focus: ', event);
   }
 
-  onReady(event: any): void {
-    console.log('On ready: ', event);
+  onReady(event: CustomEditor): void {
+    // console.log('On ready: ', event);
+    this.onEditorReady.emit(event);
   }
 
   //#endregion
