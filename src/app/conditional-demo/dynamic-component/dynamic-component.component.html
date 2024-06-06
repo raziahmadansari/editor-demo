@@ -1,0 +1,25 @@
+<p>Dynamically Renders Component</p>
+<div class="container">
+  <div class="container--left">
+    <ng-container *ngFor="let editorId of editors">
+      <p
+        (click)="setActiveEditor(editorId)"
+        class="editor-activator mt-0"
+        [class.editor-activator--active]="activeEditorId === editorId"
+      >
+        Click to render editor #{{ editorId }}
+      </p>
+    </ng-container>
+    <div>
+      <button #editorButton type="button" (click)="addEditor()">
+        Add Editor
+      </button>
+      <button class="ml-10" type="button" (click)="toggleReadonlyMode()">
+        Toggle readonly mode
+      </button>
+    </div>
+  </div>
+  <div class="container--right">
+    <ng-container #viewContainerRef></ng-container>
+  </div>
+</div>

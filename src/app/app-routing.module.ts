@@ -1,11 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { EditorComponent } from './editor/editor.component';
-
 const routes: Routes = [
   // { path: '', redirectTo: 'editor', pathMatch: 'full' },
-  { path: 'editor', component: EditorComponent },
+  {
+    path: 'loop-demo',
+    loadChildren: () =>
+      import('./loop-demo/loop-demo.module').then((m) => m.LoopDemoModule),
+  },
+  {
+    path: 'conditional-demo',
+    loadChildren: () =>
+      import('./conditional-demo/conditional-demo.module').then(
+        (m) => m.ConditionalDemoModule
+      ),
+  },
 ];
 
 @NgModule({

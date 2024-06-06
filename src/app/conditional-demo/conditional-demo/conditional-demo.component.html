@@ -1,0 +1,61 @@
+<p>Conditionally render Editor</p>
+<p
+  (click)="setActiveEditor(1)"
+  class="editor-activator"
+  [class.editor-activator--active]="activeEditorId === 1"
+>
+  Click to render editor #1
+</p>
+<app-editor
+  class="mb-10"
+  [editorInstanceId]="1"
+  *ngIf="activeEditorId === 1"
+></app-editor>
+<p
+  (click)="setActiveEditor(2)"
+  class="editor-activator"
+  [class.editor-activator--active]="activeEditorId === 2"
+>
+  Click to render editor #2
+</p>
+<app-editor
+  class="mb-10"
+  [editorInstanceId]="2"
+  *ngIf="activeEditorId === 2"
+></app-editor>
+<p
+  (click)="setActiveEditor(3)"
+  class="editor-activator"
+  [class.editor-activator--active]="activeEditorId === 3"
+>
+  Click to render editor #3
+</p>
+<app-editor
+  class="mb-10"
+  [editorInstanceId]="3"
+  *ngIf="activeEditorId === 3"
+></app-editor>
+<p
+  (click)="setActiveEditor(4)"
+  class="editor-activator"
+  [class.editor-activator--active]="activeEditorId === 4"
+>
+  Click to render editor #4
+</p>
+<app-editor
+  class="mb-10"
+  [editorInstanceId]="4"
+  *ngIf="activeEditorId === 4"
+></app-editor>
+<p
+  (click)="setActiveEditor(5)"
+  class="editor-activator"
+  [class.editor-activator--active]="activeEditorId === 5"
+>
+  Click to render editor #5
+</p>
+<app-editor
+  class="mb-10"
+  [editorInstanceId]="5"
+  *ngIf="activeEditorId === 5"
+></app-editor>

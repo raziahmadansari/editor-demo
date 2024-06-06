@@ -1,0 +1,21 @@
+<p>Conditional Loop Demo</p>
+<ng-container *ngFor="let editorId of editors">
+  <p
+    (click)="setActiveEditor(editorId)"
+    class="editor-activator"
+    [class.editor-activator--active]="activeEditorId === editorId"
+  >
+    Click to render editor #{{ editorId }}
+  </p>
+  <div class="mb-10">
+    <app-editor
+      [editorInstanceId]="editorId"
+      *ngIf="activeEditorId === editorId"
+      (onEditorReady)="onEditorReady($event)"
+    ></app-editor>
+  </div>
+</ng-container>
+<button #editorButton type="button" (click)="addEditor()">Add Editor</button>
+<button class="ml-10" type="button" (click)="toggleReadonlyMode()">
+  Toggle readonly mode
+</button>

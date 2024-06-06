@@ -1,0 +1,14 @@
+<h1>CKEditor Demo</h1>
+<ng-container
+  *ngFor="let editor of editors; index as editorId; trackBy: trackEditor"
+>
+  <div class="mb-10">
+    <app-editor
+      class="mb-10"
+      [editorInstanceId]="editorId"
+      (onEditorReady)="onReady($event)"
+    ></app-editor>
+  </div>
+</ng-container>
+<button type="button" (click)="addEditor()">+ Add Editor</button>
+<button type="button" (click)="removeEditors()">X Remove Editors</button>

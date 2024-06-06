@@ -1,0 +1,14 @@
+.editor-activator {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &.editor-activator--active {
+    background-color: #81d3ff;
+  }
+}
+
+.ml-10 {
+  margin-left: 10px;
+}

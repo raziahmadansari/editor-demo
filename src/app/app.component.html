@@ -1,7 +1,28 @@
 <h1>CKEditor Demo</h1>
-<ng-container *ngFor="let editor of editors; index as editorId">
-  <app-editor [editorInstanceId]="editorId"></app-editor>
-</ng-container>
-<button type="button" (click)="addEditor()">+ Add Editor</button>
-<button type="button" (click)="removeEditors()">X Remove Editors</button>
+<ul>
+  <li>
+    <a routerLink="loop-demo">Loop Demo</a>
+  </li>
+  <li>
+    <ul>
+      <li>
+        <a routerLink="conditional-demo">Conditional Demo</a>
+      </li>
+      <li>
+        <a routerLink="conditional-demo/conditional-loop">
+          Conditional Loop Demo
+        </a>
+      </li>
+      <li>
+        <a routerLink="conditional-demo/dynamic-editor-demo">
+          Dynamic Editor Demo
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a routerLink="/">Home</a>
+  </li>
+</ul>
+<hr />
 <router-outlet></router-outlet>
