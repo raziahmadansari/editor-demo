@@ -159,7 +159,6 @@ export default class CustomEditor extends ClassicEditorBase {
         'heading',
         '|',
         'blockQuote',
-        'dvFootNote',
       ],
     },
     image: {
