@@ -1,0 +1,27 @@
+<div class="editor mb-10" [attr.id]="id">
+  <p class="cursor-pointer mt-0" (click)="activateEditor()">
+    Click to render Editor: {{ editorInstanceId }}
+  </p>
+  <div>
+    <ng-container #viewContainerRef></ng-container>
+  </div>
+</div>
+<ng-template #readonlyTemplate let-data="data">
+  <div>{{ data }}</div>
+</ng-template>
+<ng-template
+  #editorTemplate
+  let-config="config"
+  let-editor="editor"
+  let-model="model"
+>
+  <ckeditor
+    [config]="config"
+    [editor]="editor"
+    [(ngModel)]="model.editorData"
+    (blur)="onBlur($event)"
+    (change)="onChange($event)"
+    (focus)="onFocus($event)"
+    (ready)="onReady($event)"
+  ></ckeditor>
+</ng-template>
