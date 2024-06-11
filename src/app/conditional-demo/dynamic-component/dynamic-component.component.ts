@@ -2,6 +2,7 @@ import {
   Component,
   ElementRef,
   OnInit,
+  TemplateRef,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
@@ -18,6 +19,8 @@ export class DynamicComponentComponent implements OnInit {
   editorButton!: ElementRef<HTMLButtonElement>;
   @ViewChild('viewContainerRef', { static: true, read: ViewContainerRef })
   viewContainerRef!: ViewContainerRef;
+  @ViewChild('readonlyTemplate', { static: true, read: TemplateRef })
+  readonlyTemplate!: TemplateRef<{ data: string }>;
   activeEditorId: number = 1;
   editorCount: number = 2;
   editors: Array<number> = [];
@@ -35,7 +38,13 @@ export class DynamicComponentComponent implements OnInit {
       return;
     }
 
+    const data = `This is a dummy content ${this.activeEditorId}`;
+
     this.viewContainerRef.clear();
+    this.viewContainerRef.createEmbeddedView(this.readonlyTemplate, {
+      data: data,
+    });
+
     const componentRef = this.viewContainerRef.createComponent(EditorComponent);
     componentRef.instance.editorInstanceId = this.activeEditorId;
     componentRef.changeDetectorRef.detectChanges();
