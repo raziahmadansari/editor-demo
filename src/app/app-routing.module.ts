@@ -15,6 +15,13 @@ const routes: Routes = [
         (m) => m.ConditionalDemoModule
       ),
   },
+  {
+    path: 'file-upload',
+    loadChildren: () =>
+      import('./file-upload/file-upload.module').then(
+        (m) => m.FileUploadModule
+      ),
+  },
 ];
 
 @NgModule({

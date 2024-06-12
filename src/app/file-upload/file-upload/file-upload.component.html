@@ -1,0 +1,17 @@
+<p>File Upload</p>
+<div>
+  <input
+    type="file"
+    #fileInput
+    placeholder="Select file"
+    (change)="uploadFile(fileInput.files)"
+    style="display: none"
+  />
+  <button type="button" (click)="fileInput.click()">Upload file</button>
+</div>
+<div>
+  <p *ngIf="message">{{ message }}</p>
+</div>
+<div *ngIf="data">
+  <app-editor [editorInstanceId]="editorInstanceId" [data]="data"></app-editor>
+</div>

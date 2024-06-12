@@ -19,3 +19,7 @@
 .cursor-pointer {
   cursor: pointer;
 }
+
+.ck.ck-content.ck-editor__editable.ck-editor__editable_inline {
+  max-height: calc(100vh - 120px);
+}

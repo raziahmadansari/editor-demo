@@ -22,6 +22,7 @@ import { CKEditorCommentsService } from '../../services/ckeditor-comments.servic
 })
 export class EditorComponent implements OnInit, OnChanges, OnDestroy {
   @Input() editorInstanceId!: number;
+  @Input() data: string = '';
   @Output() onEditorReady = new EventEmitter<any>();
 
   private _users = [
@@ -63,6 +64,7 @@ export class EditorComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit(): void {
     console.log(`editor initiated: { editorId: ${this.editorInstanceId} }`);
+    this.model.editorData = this.data;
     this.initConfiguration();
   }
 
